@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace platizi_curso_aspcore
+namespace platzi_curso_aspcore
 {
     public class Program
     {

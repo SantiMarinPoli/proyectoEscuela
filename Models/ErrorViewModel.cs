@@ -1,6 +1,6 @@
 using System;
 
-namespace platizi_curso_aspcore.Models
+namespace platzi_curso_aspcore.Models
 {
     public class ErrorViewModel
     {

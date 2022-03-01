@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>platizi_curso_aspcore</RootNamespace>
+    <RootNamespace>platzi_curso_aspcore</RootNamespace>
   </PropertyGroup>
 
 </Project>

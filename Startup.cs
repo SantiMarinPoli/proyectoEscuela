@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace platizi_curso_aspcore
+namespace platzi_curso_aspcore
 {
     public class Startup
     {
@@ -50,7 +50,7 @@ namespace platizi_curso_aspcore
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=School}/{action=Index}/{id?}");
             });
         }
     }

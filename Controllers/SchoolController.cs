@@ -2,7 +2,7 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using platzi_curso_aspcore.Models;
 
-namespace platizi_curso_aspcore.Controllers
+namespace platzi_curso_aspcore.Controllers
 {
     public class SchoolController: Controller
     {
