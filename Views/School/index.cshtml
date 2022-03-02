@@ -1,10 +1,13 @@
+@using platzi_curso_aspcore.Controllers
+@using platzi_curso_aspcore.Models
+
 @model School
 
 @{
     ViewData["Title"] = "Information School";
-    Layout = "_Layout";
+    Layout = "Simple";
 }
     
-<h1>School</h1>
+<h1>School @ViewData["Title"] </h1>
 <h2>Name: @Model.name</h2>
 <p><strong>Year Foundation: @Model.yearFoundation</strong></p>
