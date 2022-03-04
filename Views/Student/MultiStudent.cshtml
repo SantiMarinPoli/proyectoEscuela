@@ -1,16 +1,15 @@
 ﻿@using platzi_curso_aspcore.Models
 @using platzi_curso_aspcore.Controllers
 
-@model List<Course>
+@model List<Alumno>
 
 @{
-    ViewData["Title"] = "Information Course";
+    ViewData["Title"] = "Information Student";
     Layout = "Simple";
 }
 
 <h1>@ViewData["Title"] </h1>
 <strong>Desde la vista parcial</strong>
-
 <partial name="ListObjetoEscuela" />
 
 <p>@ViewData["date"]</p>
