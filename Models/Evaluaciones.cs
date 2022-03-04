@@ -8,7 +8,7 @@ namespace platzi_curso_aspcore.Models
         public string Nombre { get; set; }
 
         public Alumno Alumno { get; set; }
-        public Asignatura Asignatura  { get; set; }
+        public Curso Asignatura  { get; set; }
 
         public float Nota { get; set; }
 

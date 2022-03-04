@@ -12,6 +12,10 @@ namespace platzi_curso_aspcore.Controllers
             school.yearFoundation = 2010;
             school.schoolId = Guid.NewGuid().ToString();
             school.name = "Platzi School";
+            school.City = "Bogota";
+            school.Country = "Colombia";
+            school.TipoEscuela = TiposEscuela.Secundaria;
+            school.Direction = "Av. Siempre Viva";
             return View(school);
         }
     }
