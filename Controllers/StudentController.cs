@@ -9,11 +9,15 @@ namespace platzi_curso_aspcore.Controllers
     public class StudentController: Controller
     {
 
+        private SchoolContext _context;
+        public StudentController(SchoolContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
-            return View( new Alumno{Nombre = "Max Rodriguez",
-                           UniqueId = Guid.NewGuid().ToString()}
-                        );
+            return View(_context.Students.FirstOrDefault());
         }
         public IActionResult MultiStudent()
         {

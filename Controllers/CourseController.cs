@@ -1,22 +1,25 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using platzi_curso_aspcore.Models;
 
 namespace platzi_curso_aspcore.Controllers
 {
-    public class CourseController: Controller
+    public class AsignaturaController: Controller
     {
-
+        private SchoolContext _context;
+        public AsignaturaController(SchoolContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
-            return View( new Course{Nombre = "Artistic",
-                           UniqueId = Guid.NewGuid().ToString()}
-                        );
+            return View(_context.Asignaturas.FirstOrDefault());
         }
-        public IActionResult MultiCourse()
+        public IActionResult MultiAsignatura()
         {
-            var listCourse = new List<Course>{
+          /*  var listCourse = new List<Course>{
                 new Course{Nombre = "Programming",
                            UniqueId = Guid.NewGuid().ToString()
                 },
@@ -29,11 +32,11 @@ namespace platzi_curso_aspcore.Controllers
                 new Course{Nombre = "Artistic",
                            UniqueId = Guid.NewGuid().ToString()
                 }
-            } ;
+            } ;*/
 
             ViewBag.date = DateTime.Now;
             
-            return View("MultiCourse",listCourse);
+            return View("MultiAsignatura",_context.Asignaturas);
         }
     }
 }
