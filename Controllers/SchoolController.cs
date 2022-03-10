@@ -14,7 +14,7 @@ namespace platzi_curso_aspcore.Controllers
         }
         public IActionResult Index()
         {
-            var school =  _context.Schools.FirstOrDefault();
+            var school =  _context.Escuelas.FirstOrDefault();
             return View(school);
         }
 

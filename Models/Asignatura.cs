@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace platzi_curso_aspcore.Models
 {

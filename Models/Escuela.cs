@@ -3,9 +3,9 @@ using platzi_curso_aspcore.Models;
 
 namespace platzi_curso_aspcore.Models
 {
-    public class School:ObjetoEscuelaBase
+    public class Escuela:ObjetoEscuelaBase
     {
-        public string schoolId {get;set;}
+        public string EscuelaId {get;set;}
         public string name {get;set;}
         public int yearFoundation {get;set;}
         public string Country { get; set; }
@@ -16,12 +16,12 @@ namespace platzi_curso_aspcore.Models
         public TiposEscuela TipoEscuela { get; set; }
         public List<Curso> Cursos { get; set; }
 
-        public School(string nombre, int año) => (Nombre, yearFoundation) = (nombre, año);
+        public Escuela(string nombre, int año) => (Nombre, yearFoundation) = (nombre, año);
 
-        public School()
+        public Escuela()
         {}
 
-        public School(string nombre, int año, 
+        public Escuela(string nombre, int año, 
                        TiposEscuela tipo, 
                        string pais = "", string ciudad = "") : base()
         {

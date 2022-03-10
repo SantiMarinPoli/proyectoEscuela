@@ -11,7 +11,7 @@ namespace platzi_curso_aspcore.Models
 
         public string Dirección { get; set; }
         public string EscuelaId {get;set;}
-        public School Escuela {get;set;}
+        public Escuela Escuela {get;set;}
 
     }
 }
