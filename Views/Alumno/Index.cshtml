@@ -1,15 +1,15 @@
-﻿@model Asignatura
+﻿@model Alumno
 
 @{
-    ViewData["Title"] = "Informacion Asigatura";
+    ViewData["Title"] = "Informacion Alumno";
     Layout = "Simple";
 }
 
 <h1>@ViewData["Title"] </h1>
-<h2>Desde La Asignatura Normal</h2>
+<h2>Desde La Alumno Normal</h2>
 <p>Nombre: @Model.Nombre <br>
     ID: @Model.UniqueId</p>    
 <p>@ViewBag.Fecha</p>
 
-<h2>Desde la Asignatura Parcial</h2>
+<h2>Desde la Alumno Parcial</h2>
 <partial name="ObjetoEscuelaSimple" />
