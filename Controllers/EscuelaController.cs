@@ -12,6 +12,10 @@ namespace escuelaWeb.Controllers
             escuela.AñoDeCreación = 2005;
             escuela.UniqueId = Guid.NewGuid().ToString();
             escuela.Nombre = "Platzi School";
+            escuela.Dirección = "Avd. Siempre Viva";
+            escuela.Ciudad = "Bogota";
+            escuela.Pais = "Colombia";
+            escuela.TipoEscuela = TiposEscuela.Secundaria;
             ViewBag.CosaDinamica = "La monja";
 
             return View(escuela);
