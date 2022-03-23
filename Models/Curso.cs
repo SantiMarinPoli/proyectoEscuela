@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace platzi_asp_net_core.Models
+namespace escuelaWeb.Models
 {
     public class Curso:ObjetoEscuelaBase
     {

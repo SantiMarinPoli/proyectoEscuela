@@ -1,6 +1,6 @@
 using System;
 
-namespace platzi_asp_net_core.Models
+namespace escuelaWeb.Models
 {
     public class Evaluaciones
     {
