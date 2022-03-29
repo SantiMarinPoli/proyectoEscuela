@@ -7,10 +7,10 @@ using System.Linq;
 
 namespace escuelaWeb.Controllers
 {
-    public class AlumnoController : Controller
+    public class CursoController : Controller
     {
         private EscuelaContext _context;
-        public AlumnoController(EscuelaContext context )
+        public CursoController(EscuelaContext context )
         {
             _context = context;
         }
@@ -18,22 +18,22 @@ namespace escuelaWeb.Controllers
         {
             if(!string.IsNullOrWhiteSpace(id))
             {
-                var alumnos = from alm in _context.Alumnos
-                             where alm.Id == id
-                             select alm;
-                return View(alumnos.SingleOrDefault());
+                var cursos = from cur in _context.Cursos
+                             where cur.Id == id
+                             select cur;
+                return View(cursos.SingleOrDefault());
             }
             else
             {
-                return View("MultiAlumno",_context.Alumnos);
+                return View("MultiCurso",_context.Cursos);
             }   
         }
-        public IActionResult MultiAlumno()
+        public IActionResult MultiCurso()
         {
             ViewBag.CosaDinamica = "La monja";
             ViewBag.Fecha = DateTime.Now;
 
-            return View("MultiAlumno",_context.Alumnos);
+            return View("MultiCurso",_context.Cursos);
 
         }
     }
