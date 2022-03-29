@@ -10,26 +10,26 @@ namespace escuelaWeb.Controllers
         public IActionResult Index()
         {
             return View( new Asignatura{
-                        UniqueId = Guid.NewGuid().ToString(),
+                        Id = Guid.NewGuid().ToString(),
                         Nombre = "Programacion"});
         }
         public IActionResult MultiAsignatura()
         {
             var listaAsignatura = new List<Asignatura>(){
                     new Asignatura{
-                        UniqueId = Guid.NewGuid().ToString(),
+                        Id = Guid.NewGuid().ToString(),
                         Nombre = "Programacion"
                     },
                     new Asignatura{
-                        UniqueId = Guid.NewGuid().ToString(),
+                        Id = Guid.NewGuid().ToString(),
                         Nombre = "Matematica"
                     },
                      new Asignatura{
-                        UniqueId = Guid.NewGuid().ToString(),
+                        Id = Guid.NewGuid().ToString(),
                         Nombre = "Ingles"
                     },
                      new Asignatura{
-                        UniqueId = Guid.NewGuid().ToString(),
+                        Id = Guid.NewGuid().ToString(),
                         Nombre = "Artistica"
                     }
 

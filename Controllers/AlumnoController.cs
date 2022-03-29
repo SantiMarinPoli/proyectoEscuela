@@ -10,26 +10,26 @@ namespace escuelaWeb.Controllers
         public IActionResult Index()
         {
             return View( new Alumno{
-                        UniqueId = Guid.NewGuid().ToString(),
+                        Id = Guid.NewGuid().ToString(),
                         Nombre = "EL PEPE PEREZ"});
         }
         public IActionResult MultiAlumno()
         {
             var listaAlumno = new List<Alumno>(){
                     new Alumno{
-                        UniqueId = Guid.NewGuid().ToString(),
+                        Id = Guid.NewGuid().ToString(),
                         Nombre = "Peter Parker"
                     },
                     new Alumno{
-                        UniqueId = Guid.NewGuid().ToString(),
+                        Id = Guid.NewGuid().ToString(),
                         Nombre = "Tony Stark"
                     },
                      new Alumno{
-                        UniqueId = Guid.NewGuid().ToString(),
+                        Id = Guid.NewGuid().ToString(),
                         Nombre = "Bill Gates"
                     },
                      new Alumno{
-                        UniqueId = Guid.NewGuid().ToString(),
+                        Id = Guid.NewGuid().ToString(),
                         Nombre = "Albert Einstein"
                     }
 

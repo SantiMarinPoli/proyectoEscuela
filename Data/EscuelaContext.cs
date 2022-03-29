@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using escuelaWeb.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +18,64 @@ namespace escuelaWeb.Data
         public EscuelaContext(DbContextOptions<EscuelaContext> options): base(options)
         {
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            var escuela = new Escuela();
+            escuela.AñoDeCreación = 2005;
+            escuela.Id = Guid.NewGuid().ToString();
+            escuela.Nombre = "Platzi School";
+            escuela.Dirección = "Avd. Siempre Viva";
+            escuela.Ciudad = "Bogota";
+            escuela.Pais = "Colombia";
+            escuela.TipoEscuela = TiposEscuela.Secundaria;
+
+            modelBuilder.Entity<Escuela>().HasData(escuela);
+
+            modelBuilder.Entity<Asignatura>().HasData(
+                    new Asignatura{
+                        Id = Guid.NewGuid().ToString(),
+                        Nombre = "Programacion"
+                    },
+                    new Asignatura{
+                        Id = Guid.NewGuid().ToString(),
+                        Nombre = "Matematica"
+                    },
+                     new Asignatura{
+                        Id = Guid.NewGuid().ToString(),
+                        Nombre = "Ingles"
+                    },
+                     new Asignatura{
+                        Id = Guid.NewGuid().ToString(),
+                        Nombre = "Artistica"
+                    }
+
+            );
+
+            modelBuilder.Entity<Alumno>().HasData(
+                                                    GenerarAlumnosAlAzar().ToArray()
+                                           );
+        }
+
+        private List<Alumno> GenerarAlumnosAlAzar()
+        {
+            string[] nombre1 = { "Alba", "Felipa", "Eusebio", "Farid", "Donald", "Alvaro", "Nicolás" };
+            string[] apellido1 = { "Ruiz", "Sarmiento", "Uribe", "Maduro", "Trump", "Toledo", "Herrera" };
+            string[] nombre2 = { "Freddy", "Anabel", "Rick", "Murty", "Silvana", "Diomedes", "Nicomedes", "Teodoro" };
+
+            var listaAlumnos = from n1 in nombre1
+                               from n2 in nombre2
+                               from a1 in apellido1
+                               select new Alumno
+                               {
+                                   Nombre = $"{n1} {n2} {a1}",
+                                   Id = Guid.NewGuid().ToString()
+                               };
+
+            return listaAlumnos.OrderBy((al) => al.Id).ToList();
         }
 
     }
