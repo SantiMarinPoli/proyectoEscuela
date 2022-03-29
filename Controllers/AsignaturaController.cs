@@ -14,9 +14,21 @@ namespace escuelaWeb.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        [Route("Asignatura/Index")]
+        [Route("Asignatura/Index/{idAsignatura}")]
+        public IActionResult Index(string idAsignatura)
         {
-            return View(_context.Asignaturas.FirstOrDefault());
+            if(!string.IsNullOrWhiteSpace(idAsignatura))
+            {
+                var asignatura = from asig in _context.Asignaturas
+                             where asig.Id == idAsignatura
+                             select asig;
+                return View(asignatura.SingleOrDefault());
+            }
+            else
+            {
+                return View("MultiAsignatura",_context.Asignaturas);
+            }   
         }
         public IActionResult MultiAsignatura()
         {
