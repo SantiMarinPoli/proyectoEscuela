@@ -1,43 +1,29 @@
 using System;
 using System.Collections.Generic;
+using escuelaWeb.Data;
 using escuelaWeb.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace escuelaWeb.Controllers
 {
     public class AsignaturaController : Controller
     {
+        private EscuelaContext _context;
+        public AsignaturaController(EscuelaContext context )
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
-            return View( new Asignatura{
-                        Id = Guid.NewGuid().ToString(),
-                        Nombre = "Programacion"});
+            return View(_context.Asignaturas.FirstOrDefault());
         }
         public IActionResult MultiAsignatura()
         {
-            var listaAsignatura = new List<Asignatura>(){
-                    new Asignatura{
-                        Id = Guid.NewGuid().ToString(),
-                        Nombre = "Programacion"
-                    },
-                    new Asignatura{
-                        Id = Guid.NewGuid().ToString(),
-                        Nombre = "Matematica"
-                    },
-                     new Asignatura{
-                        Id = Guid.NewGuid().ToString(),
-                        Nombre = "Ingles"
-                    },
-                     new Asignatura{
-                        Id = Guid.NewGuid().ToString(),
-                        Nombre = "Artistica"
-                    }
-
-            };
             ViewBag.CosaDinamica = "La monja";
             ViewBag.Fecha = DateTime.Now;
 
-            return View("MultiAsignatura",listaAsignatura);
+            return View("MultiAsignatura",_context.Asignaturas);
 
         }
     }
