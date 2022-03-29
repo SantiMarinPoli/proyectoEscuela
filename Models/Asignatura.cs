@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace escuelaWeb.Models
 {
@@ -6,6 +7,8 @@ namespace escuelaWeb.Models
     {
         public string CursoId {get;set;}
         public Curso Curso {get;set;}
+        public List<Evaluación> Evaluaciones { get; set; }
+
 
     }
 }

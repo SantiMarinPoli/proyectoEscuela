@@ -35,32 +35,99 @@ namespace escuelaWeb.Data
 
             modelBuilder.Entity<Escuela>().HasData(escuela);
 
-            modelBuilder.Entity<Asignatura>().HasData(
-                    new Asignatura{
-                        Id = Guid.NewGuid().ToString(),
-                        Nombre = "Programacion"
-                    },
-                    new Asignatura{
-                        Id = Guid.NewGuid().ToString(),
-                        Nombre = "Matematica"
-                    },
-                     new Asignatura{
-                        Id = Guid.NewGuid().ToString(),
-                        Nombre = "Ingles"
-                    },
-                     new Asignatura{
-                        Id = Guid.NewGuid().ToString(),
-                        Nombre = "Artistica"
-                    }
+            //Cargar cursos de la escuela
+            var cursos = CargarCursos(escuela);
 
-            );
+            //por cada curso cargar asiganatura
+            var asignaturas = CargarAsignaturas(cursos);
 
-            modelBuilder.Entity<Alumno>().HasData(
-                                                    GenerarAlumnosAlAzar().ToArray()
-                                           );
+            //por cada curso cargar alumnos
+            var alumnos = CargarAlumnos(cursos);
+
+            //modelBuilder.Entity<Escuela>().HasData(escuela);
+            modelBuilder.Entity<Curso>().HasData(cursos.ToArray());
+            modelBuilder.Entity<Asignatura>().HasData(asignaturas.ToArray());
+            modelBuilder.Entity<Alumno>().HasData(alumnos.ToArray());
         }
 
-        private List<Alumno> GenerarAlumnosAlAzar()
+        private List<Alumno> CargarAlumnos(List<Curso> cursos)
+        {
+            var listaAlumno = new List<Alumno>();
+            Random rnd = new Random();
+            foreach(var curso in cursos)
+            {
+                int cantRandom = rnd.Next(5,20);
+                var tmpList = GenerarAlumnosAlAzar(cantRandom,curso);
+                listaAlumno.AddRange(tmpList);
+            }
+            return listaAlumno;
+        }
+
+        private static List<Asignatura> CargarAsignaturas(List<Curso> cursos)
+        {
+            var listaCompleta  = new List<Asignatura>(); 
+
+            foreach (var curso in cursos)
+            {
+                var tmpList = new List<Asignatura>{
+                    new Asignatura
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        CursoId = curso.Id,
+                        Nombre = "Programacion"
+                    },
+                    new Asignatura
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        CursoId = curso.Id,
+                        Nombre = "Matematica"
+                    },
+                     new Asignatura
+                     {
+                         Id = Guid.NewGuid().ToString(),
+                         CursoId = curso.Id,
+                         Nombre = "Ingles"
+                     },
+                     new Asignatura
+                     {
+                         Id = Guid.NewGuid().ToString(),
+                         CursoId = curso.Id,
+                         Nombre = "Artistica"
+                     }
+                };
+                listaCompleta.AddRange(tmpList);
+                //curso.Asignaturas = tmpList;
+            }
+
+            return listaCompleta;
+        }
+
+        private static List<Curso> CargarCursos(Escuela escuela)
+        {
+            return new List<Curso>()
+            {
+                new Curso(){
+                    Id = Guid.NewGuid().ToString(),
+                    EscuelaId = escuela.Id,
+                    Nombre = "101",
+                    Jornada = TiposJornada.Mañana
+                },
+                 new Curso(){
+                    Id = Guid.NewGuid().ToString(),
+                    EscuelaId = escuela.Id,
+                    Nombre = "102",
+                    Jornada = TiposJornada.Noche
+                },
+                 new Curso(){
+                    Id = Guid.NewGuid().ToString(),
+                    EscuelaId = escuela.Id,
+                    Nombre = "103",
+                    Jornada = TiposJornada.Tarde
+                }
+            };
+        }
+
+        private List<Alumno> GenerarAlumnosAlAzar(int cantidad,Curso curso)
         {
             string[] nombre1 = { "Alba", "Felipa", "Eusebio", "Farid", "Donald", "Alvaro", "Nicolás" };
             string[] apellido1 = { "Ruiz", "Sarmiento", "Uribe", "Maduro", "Trump", "Toledo", "Herrera" };
@@ -71,11 +138,12 @@ namespace escuelaWeb.Data
                                from a1 in apellido1
                                select new Alumno
                                {
+                                   CursoId = curso.Id,
                                    Nombre = $"{n1} {n2} {a1}",
                                    Id = Guid.NewGuid().ToString()
                                };
 
-            return listaAlumnos.OrderBy((al) => al.Id).ToList();
+            return listaAlumnos.OrderBy((al) => al.Id).Take(cantidad).ToList();
         }
 
     }
