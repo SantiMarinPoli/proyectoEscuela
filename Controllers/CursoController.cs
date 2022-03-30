@@ -63,6 +63,63 @@ namespace escuelaWeb.Controllers
             }
 
         }
+
+        public IActionResult Update(string id)
+        {
+           if(id == null)
+           {
+               return NotFound();
+           }
+
+           var curso = _context.Cursos.Find(id);
+           if (curso == null)
+           {
+               return NotFound();
+           }
+
+           return View(curso);
+
+        }
+
+        [HttpPost]
+        public IActionResult Update(string id,Curso curso)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            if(ModelState.IsValid)
+            {
+                var escuela = _context.Escuelas.FirstOrDefault();
+
+                curso.EscuelaId = escuela.Id;
+                _context.Cursos.Update(curso);
+                _context.SaveChanges();
+                ViewBag.MensajeExtra = "Curso Editado";
+                return View("Index",curso);
+            }
+            else
+            {
+                return View(curso);
+            }
+
+        }
+
+        public IActionResult Delete(string id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var curso = _context.Cursos.Find(id);
+
+            _context.Cursos.Remove(curso);
+            _context.SaveChanges();
+            ViewBag.MensajeExtra = "Curso Eliminado";
+            return View("MultiCurso",_context.Cursos);
+        }
     }
 
 }
