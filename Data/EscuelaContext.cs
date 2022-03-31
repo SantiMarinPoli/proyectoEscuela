@@ -110,19 +110,22 @@ namespace escuelaWeb.Data
                     Id = Guid.NewGuid().ToString(),
                     EscuelaId = escuela.Id,
                     Nombre = "101",
-                    Jornada = TiposJornada.Mañana
+                    Jornada = TiposJornada.Mañana,
+                    Dirección = "Avenida Siempre viva"
                 },
                  new Curso(){
                     Id = Guid.NewGuid().ToString(),
                     EscuelaId = escuela.Id,
                     Nombre = "102",
-                    Jornada = TiposJornada.Noche
+                    Jornada = TiposJornada.Noche,
+                    Dirección = "Avenida Siempre viva"
                 },
                  new Curso(){
                     Id = Guid.NewGuid().ToString(),
                     EscuelaId = escuela.Id,
                     Nombre = "103",
-                    Jornada = TiposJornada.Tarde
+                    Jornada = TiposJornada.Tarde,
+                    Dirección = "Avenida Siempre viva"
                 }
             };
         }
